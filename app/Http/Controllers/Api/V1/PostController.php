@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -33,7 +33,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return $this->successResponse(new PostResource($post),200);
     }
 
     /**

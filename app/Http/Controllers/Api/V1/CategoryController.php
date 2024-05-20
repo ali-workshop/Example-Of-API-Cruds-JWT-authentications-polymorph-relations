@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use Exception;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\services\Traits\apiresponse;
+use App\Http\Resources\CategoryResource;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-use App\Http\Resources\CategoryResource;
-use App\services\Traits\apiresponse;
-use Illuminate\Http\JsonResponse;
+
 class CategoryController extends Controller
 {
     use apiresponse;
@@ -36,7 +38,7 @@ class CategoryController extends Controller
                 $category->save();
                 return $this->successResponse(new CategoryResource($category), 200);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return $this->errorResponse("An error occurred MAN oops ALI : " . $e->getMessage(), [], 500);
         }
     }
