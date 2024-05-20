@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
 use App\services\Traits\apiresponse;
+use Exception;
 
 class PostController extends Controller
 {
@@ -25,7 +26,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
+        try
+        {
+            $post=new Post();
+            
+
+        }
+        catch(Exception $e)
+        {
+            return $this->errorResponse('MAN what the problem ther is error.... fix it quicly pls:');
+        }
     }
 
     /**
