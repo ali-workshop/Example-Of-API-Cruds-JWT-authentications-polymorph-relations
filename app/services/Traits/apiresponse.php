@@ -10,7 +10,7 @@ trait apiresponse{
     {
         return response()->json([
             'success'    => true,
-            'message'    => null,
+            'message'    => 'Succussfully/olaaa',
             'data'       => $data,
             'errors'     => null,
         ], $httpResponseCode);
