@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
+
+
+     /**
      * Display a listing of the resource.
      */
     public function index()
@@ -39,6 +41,7 @@ class CategoryController extends Controller
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      */
