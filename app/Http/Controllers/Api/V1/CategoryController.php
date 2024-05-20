@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function index()
     {
      $categories=Category::paginate(20);
-     return response()->$this->successResponse(new CategoryResource($categories),200);
+     return response()->$this->successResponse(CategoryResource::collection($categories),200);
     }
 
     /**
