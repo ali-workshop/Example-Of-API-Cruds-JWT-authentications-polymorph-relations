@@ -28,9 +28,12 @@ class PostController extends Controller
     {
         try
         {
+            $validated=$request->safe()->only(['title','body']);
             $post=new Post();
-            
-
+            $post->title=$validated['title'];
+            $post->title=$validated['body'];
+            $post->save();
+            return $this->successResponse(new PostResource($post),200);
         }
         catch(Exception $e)
         {
@@ -51,7 +54,19 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        
+        try
+        {
+            $validated=$request->safe()->only(['title','body']);
+            $post->title=$validated['title'];
+            $post->title=$validated['body'];
+            $post->save();
+            return $this->successResponse(new PostResource($post),200);
+        }
+        catch(Exception $e)
+        {
+            return $this->errorResponse('MAN what the problem ther is error.... fix it quicly pls:');
+        }
     }
 
     /**
@@ -59,6 +74,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        
+        $post->delete();
+        $data='the post deleted succussefully';
+        return $this->successResponse($data,200);
     }
 }
