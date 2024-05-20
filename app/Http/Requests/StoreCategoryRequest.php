@@ -11,7 +11,7 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>['required','string','max:15','min:4'],
         ];
     }
+    
+    public function messages(): array
+{
+    return [
+        'name.required' => 'A name is required',
+        'name.string' => 'A name should string',
+        'name.max' => 'A name maximum 15',
+        'name.min' => 'A name minmum 4',
+    ];
+}
 }
