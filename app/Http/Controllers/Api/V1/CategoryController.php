@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
+use App\services\Traits\apiresponse;
 
 class CategoryController extends Controller
 {
-
+    use apiresponse;
 
      /**
      * Display a listing of the resource.
@@ -16,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
      $categories=Category::paginate(20);
-     return response()->json($categories,$tatus=200);
+     return response()->$this->successResponse(new CategoryResource($categories),200);
     }
 
     /**
@@ -24,7 +26,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+        $category=new Category();
+        
+
+        return $this->successResponse(new CategoryResource($category),200);
     }
 
     /**
@@ -32,7 +39,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return $this->successResponse(new CategoryResource($category),200);
     }
 
     /**
