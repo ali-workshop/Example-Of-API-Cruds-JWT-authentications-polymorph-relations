@@ -55,7 +55,7 @@ class CommentController extends Controller
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
         try
-        {
+        {   #no need to validate the user_id i think???
             $validated=$request->safe()->only(['body']);
             $comment->title=$validated['body'];
             $comment->save();
