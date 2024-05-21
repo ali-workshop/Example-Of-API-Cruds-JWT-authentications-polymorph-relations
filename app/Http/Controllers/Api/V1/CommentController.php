@@ -6,12 +6,14 @@ use Exception;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\services\Traits\apiresponse;
 use App\Http\Resources\CommentResource;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 
 class CommentController extends Controller
 {
+    use apiresponse;
     /**
      * Display a listing of the resource.
      */
