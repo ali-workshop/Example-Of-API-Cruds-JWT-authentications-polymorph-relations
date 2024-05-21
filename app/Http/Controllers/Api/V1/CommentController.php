@@ -39,7 +39,7 @@ class CommentController extends Controller
         }
         catch(Exception $e)
         {
-            return $this->errorResponse('MAN what the problem ther is error.... fix it quicly pls:');
+            return $this->errorResponse('MAN what the problem ther is error.... fix it quicly pls:',[$e]);
         }
     }
 
