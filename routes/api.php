@@ -33,7 +33,10 @@ Route::group(['prefix'=>'V1','namespace'=>'App\Http\Controllers\Api\V1'],functio
 
     Route::apiResource('categories',CategoryController::class);
     Route::apiResource('posts',PostController::class);
-    Route::apiResource('comments',CommentController::class);
-
 });
+
+
+Route::resource('posts.comments', CommentController::class)->only([
+    'index', 'store', 'show', 'update', 'destroy'
+])->middleware('auth:api');
 
