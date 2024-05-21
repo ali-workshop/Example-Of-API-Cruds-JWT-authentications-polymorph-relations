@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\V1\PostController;
+use App\Http\Controllers\Api\V1\CommentController;
 use App\Http\Controllers\Api\V1\CategoryController;
 
 /*
@@ -32,6 +33,7 @@ Route::group(['prefix'=>'V1','namespace'=>'App\Http\Controllers\Api\V1'],functio
 
     Route::apiResource('categories',CategoryController::class);
     Route::apiResource('posts',PostController::class);
+    Route::apiResource('comments',CommentController::class);
 
 });
 
