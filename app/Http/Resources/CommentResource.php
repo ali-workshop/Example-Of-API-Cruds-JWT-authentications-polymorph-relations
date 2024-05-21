@@ -17,6 +17,7 @@ class CommentResource extends JsonResource
         return
         [
             "Body"=>$this->body,
+            "User_id"=>$this->user_id,
 
         ];
     }

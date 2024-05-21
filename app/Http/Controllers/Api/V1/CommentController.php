@@ -11,6 +11,7 @@ use App\services\Traits\apiresponse;
 use App\Http\Resources\CommentResource;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use PHPOpenSourceSaver\JWTAuth\Contracts\Providers\Auth;
 
 class CommentController extends Controller
 {
@@ -32,11 +33,11 @@ class CommentController extends Controller
     {
         try
         {
-            $validated=$request->safe()->only(['body','user_id']);
+            $validated=$request->safe()->only(['body']);
             $post = Post::findOrFail($postId);
             $comment=new Comment();
             $comment->body=$validated['body'];
-            $comment->user_id=$validated['user_id'];
+            $comment->user_id=auth()->user()->id;
             $post->comments()->save($comment);
             return $this->successResponse(new CommentResource($comment),200);
         }

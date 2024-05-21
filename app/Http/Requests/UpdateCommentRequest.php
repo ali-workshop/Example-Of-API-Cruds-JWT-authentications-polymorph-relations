@@ -23,7 +23,6 @@ class UpdateCommentRequest extends FormRequest
     {
         return [
             'body'=>['nullable','string','max:500'],
-            'user_id'=>['integer','exists:users,id']
         ];
     }
 }
