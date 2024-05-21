@@ -11,7 +11,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title'=>['nullable','string'],
+            'body'=>['required','string'],
+            'user_id'=>['required','integer','exists:users,id'],
+            'category_id'=>['required','integer','exists:categories,id']
         ];
     }
 }
