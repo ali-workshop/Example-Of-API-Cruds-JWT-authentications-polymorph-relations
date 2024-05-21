@@ -28,9 +28,10 @@ class CommentController extends Controller
     {
         try
         {
-            $validated=$request->safe()->only(['body']);
+            $validated=$request->safe()->only(['body','user_id']);
             $comment=new Comment();
-            $comment->title=$validated['body'];
+            $comment->body=$validated['body'];
+            $comment->user_id=$validated['user_id'];
             $comment->save();
             return $this->successResponse(new CommentResource($comment),200);
         }

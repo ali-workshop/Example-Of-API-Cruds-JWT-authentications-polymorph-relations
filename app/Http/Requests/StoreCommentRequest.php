@@ -22,7 +22,8 @@ class StoreCommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'body'=>['nullable','string','max:500']
+            'body'=>['nullable','string','max:500'],
+            'user_id'=>['integer','exists:users,id']
         ];
     }
 }
